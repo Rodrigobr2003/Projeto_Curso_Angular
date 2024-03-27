@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -15,6 +15,8 @@ export class RecipesListComponent {
     // ),
   ];
 
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
+
   addRecipe() {
     this.recipes.push(
       new Recipe(
@@ -23,5 +25,9 @@ export class RecipesListComponent {
         'https://s2-receitas.glbimg.com/dOFKHQfqtZEqGTLm9dYDWAQG75M=/0x0:1280x800/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2022/r/F/8mYkcQQNuwDZBx51XtiA/manjar-receita.jpg'
       )
     );
+  }
+
+  onRecipeSelected(recipe: Recipe) {
+    this.recipeWasSelected.emit(recipe);
   }
 }
