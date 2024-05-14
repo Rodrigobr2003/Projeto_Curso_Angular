@@ -10,8 +10,6 @@ import { ShoppinListService } from '../shopping-list/shoppin-list.service';
 export class RecipeService {
   constructor(private slService: ShoppinListService) {}
 
-  recipeSelected = new EventEmitter<Recipe>();
-
   private recipes: Recipe[] = [
     new Recipe(
       'Test Recipe',
